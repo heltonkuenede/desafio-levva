@@ -10,7 +10,7 @@
 
 1. Introdução
 
-- Este projeto utiliza Cypress para automatizar testes de interface web e API. O objetivo é garantir a qualidade, cobertura e rapidez - nos testes da aplicação.
+- Este projeto utiliza Cypress para automatizar testes de interface web e API. O objetivo é garantir a qualidade, cobertura e rapidez nos testes da aplicação.
 
 2. Pré-requisitos
 
