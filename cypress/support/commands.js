@@ -23,25 +23,6 @@ Cypress.Commands.add('loginToCard', (cardName) => {
     // Visita a URL inicial definida na variável de ambiente
     cy.visit(baseUrl);
 
-    // Encontra o card com base no nome
-    cy.contains('.item-title', name).click();
-
     // Visita a URL do card específico e força para abrir na mesma aba
     cy.visit(url);
-
-    // Insere o usuário e senha do card específico
-    cy.get('#username').type(username);
-    cy.get('#password').type(password);
-
-    // Aguarda o iframe do reCAPTCHA carregar e clica no checkbox
-    cy.wait(5000); // Tempo de espera ajustável conforme necessário
-    cy.get('iframe[title="reCAPTCHA"]').should('be.visible').then($iframe => {
-        const $body = $iframe.contents().find('body');
-        
-        // Aguarda o conteúdo do iframe estar acessível
-        cy.wrap($body).find('.recaptcha-checkbox-border').should('be.visible').click();
-    });
-
-    // Clique no botão de login
-    cy.get('#loginBtn').click(); // Substitua com o seletor correto do botão de login
 });
