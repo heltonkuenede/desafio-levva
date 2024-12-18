@@ -1,0 +1,32 @@
+{
+  "name": "",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run",
+    "test:open": "cypress open",
+    "test:ci": "cypress run --record",
+    "test:teste": "cypress open --env enviroment=teste",
+    "test:homolog": "cypress open --env enviroment=homolog"
+  },
+  "keywords": [],
+  "author": "Soraya Silva",
+  "license": "ISC",
+  "dependencies": {
+    "iframe": "^1.0.0",
+    "ng-recaptcha": "^13.2.1",
+    "npm": "^10.8.3",
+    "recaptcha": "^1.2.1",
+    "uuid": "^10.0.0",
+    "webpack": "^5.92.0",
+    "webpack-preprocessor": "^0.1.12"
+  },
+  "devDependencies": {
+    "cypress": "^13.15.0",
+    "cypress-iframe": "^1.0.1"
+  },
+  "cypress": {
+    "baseUrl": "https://front.serverest.dev/login"
+  }
+}
