@@ -36,4 +36,22 @@ describe('Teste da API - Página de Login', () => {
             expect(response.body).to.have.property('password', 'password não pode ficar em branco');
         })
     })
+
+    it('Deve validar status code 400, campo email com texto inválido e mensagem de validação de email do back-end', () => {
+        cy.request({
+            method: 'POST',
+            url: `${baseUrl}/login`,
+            failOnStatusCode: false, // Permite continuar mesmo que o status não seja 2xx
+            body: {
+                email: 'testemail.com', //Email inválido
+                password: 'Teste!@#45',
+            },
+        }).then((response) => {
+            // Valida o status HTTP
+            expect(response.status).to.eq(400);
+
+            // Inspeciona a estrutura do body para validar o campo correto
+            expect(response.body).to.have.property('email', 'email deve ser um email válido');
+        })
+    })
 });
