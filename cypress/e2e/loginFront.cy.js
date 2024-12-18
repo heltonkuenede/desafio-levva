@@ -9,13 +9,13 @@ describe('Desafio de Automação com Cypress', () => {
   it('Cenário de Teste 01: Login - Campo obrigatório não preenchido - E-mail', () => {
 
     // Deve realizar a validação do campo e-mail
-    cy.get('[data-testid="email"]');
+    cy.get('[data-testid="email"]', { timeout: 60000 });
     cy.get('[data-testid="senha"]').type("Teste!@#45"); // preenche o campo senha
-    cy.get('[data-testid="entrar"]').click(); // clica no botão Entrar
+    cy.get('[data-testid="entrar"]').should('have.text', 'Entrar').click(); // clica no botão Entrar
 
     cy.wait(1000);
     // Deve validar se apresenta a mensagem de campo obrigatório
-    cy.get('.alert > :nth-child(2)').invoke('text').then((erro) => {
+    cy.get('.alert > :nth-child(2)', { timeout: 60000 }).invoke('text').then((erro) => {
       const msgErro = erro.trim();
       expect('Email é obrigatório').to.equal(msgErro);
     })
@@ -26,11 +26,11 @@ describe('Desafio de Automação com Cypress', () => {
     // Deve realizar a validação do campo senha
     cy.get('[data-testid="email"]').type('teste@mail.com');  // preenche o campo e-mail
     cy.get('[data-testid="senha"]');
-    cy.get('[data-testid="entrar"]').click(); // clica no botão Entrar
+    cy.get('[data-testid="entrar"]').should('have.text', 'Entrar').click(); // clica no botão Entrar
 
     cy.wait(1000);
     // Deve validar se apresenta a mensagem de campo obrigatório
-    cy.get('.alert > :nth-child(2)').invoke('text').then((erro) => {
+    cy.get('.alert > :nth-child(2)', { timeout: 60000 }).invoke('text').then((erro) => {
       const msgErro = erro.trim();
       expect('Password é obrigatório').to.equal(msgErro);
     })
@@ -39,17 +39,17 @@ describe('Desafio de Automação com Cypress', () => {
   it('Cenário de Teste 03: Cadastrar Usuário - Campo obrigatório não preenchido - Nome', () => {
 
     // Deve clicar no link 'Cadastrar-se'
-    cy.get('[data-testid="cadastrar"]').click()
+    cy.get('[data-testid="cadastrar"]').should('have.text', 'Cadastre-se').click()
 
     // Deve realizar a validação do campo nome
-    cy.get('[data-testid="nome"]')
+    cy.get('[data-testid="nome"]', { timeout: 60000 })
     cy.get('[data-testid="email"]').type('teste@mail.com'); // preenche o campo e-mail
     cy.get('[data-testid="password"]').type('Teste!@#45'); // preence o campo senha
-    cy.get('[data-testid="cadastrar"]').click() // clica no botão Cadastrar
+    cy.get('[data-testid="cadastrar"]').should('have.text', 'Cadastrar').click(); // clica no botão Cadastrar
 
     cy.wait(1000);
     // Deve validar se apresenta a mensagem de campo obrigatório
-    cy.get('.alert > :nth-child(2)').invoke('text').then((erro) => {
+    cy.get('.alert > :nth-child(2)', { timeout: 60000 }).invoke('text').then((erro) => {
       const msgErro = erro.trim();
       expect('Nome é obrigatório').to.equal(msgErro);
     })
@@ -61,14 +61,14 @@ describe('Desafio de Automação com Cypress', () => {
     cy.get('[data-testid="cadastrar"]').click()
 
     // Deve realizar a validação do campo nome
-    cy.get('[data-testid="nome"]').type('Teste'); // preenche o campo nome
+    cy.get('[data-testid="nome"]', { timeout: 60000 }).type('Teste'); // preenche o campo nome
     cy.get('[data-testid="email"]')
     cy.get('[data-testid="password"]').type('Teste!@#45'); // preence o campo senha
-    cy.get('[data-testid="cadastrar"]').click() // clica no botão Cadastrar
+    cy.get('[data-testid="cadastrar"]').should('have.text', 'Cadastrar').click(); // clica no botão Cadastrar
 
     cy.wait(1000);
     // Deve validar se apresenta a mensagem de campo obrigatório
-    cy.get('.alert > :nth-child(2)').invoke('text').then((erro) => {
+    cy.get('.alert > :nth-child(2)', { timeout: 60000 }).invoke('text').then((erro) => {
       const msgErro = erro.trim();
       expect('Email é obrigatório').to.equal(msgErro);
     })
@@ -80,14 +80,14 @@ describe('Desafio de Automação com Cypress', () => {
     cy.get('[data-testid="cadastrar"]').click()
 
     // Deve realizar a validação do campo nome
-    cy.get('[data-testid="nome"]').type('Teste') // preenche o campo nome
+    cy.get('[data-testid="nome"]', { timeout: 60000 }).type('Teste') // preenche o campo nome
     cy.get('[data-testid="email"]').type('teste@mail.com'); // preenche o campo e-mail
     cy.get('[data-testid="password"]')
-    cy.get('[data-testid="cadastrar"]').click() // clica no botão Cadastrar
+    cy.get('[data-testid="cadastrar"]').should('have.text', 'Cadastrar').click(); // clica no botão Cadastrar
 
     cy.wait(1000);
     // Deve validar se apresenta a mensagem de campo obrigatório
-    cy.get('.alert > :nth-child(2)').invoke('text').then((erro) => {
+    cy.get('.alert > :nth-child(2)', { timeout: 60000 }).invoke('text').then((erro) => {
       const msgErro = erro.trim();
       expect('Password é obrigatório').to.equal(msgErro);
     })
