@@ -20,4 +20,19 @@ describe('Desafio de Automação com Cypress', () => {
             expect('Email é obrigatório').to.equal(msgErro);
         })
     })
+
+    it('Cenário de Teste 02: Login - Campo obrigatório não preenchido - Senha', () => {
+
+        // Deve realizar a validação do campo senha
+        cy.get('[data-testid="email"]').type('teste@mail.com');  // preenche o campo e-mail
+        cy.get('[data-testid="senha"]');
+        cy.get('[data-testid="entrar"]').click(); // clica no botão Entrar
+
+        cy.wait(1000);
+        // Deve validar se apresenta a mensagem de campo obrigatório
+        cy.get('.alert > :nth-child(2)').invoke('text').then((erro) => {
+            const msgErro = erro.trim();
+            expect('Password é obrigatório').to.equal(msgErro);
+        })
+    })
 });
